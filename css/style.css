@@ -114,6 +114,7 @@ box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
 }
 .navbar-expand-md .navbar-nav .nav-link {
 padding: 15px;
+ color: rgba(0,0,0,.9);
 }
 .navbar-light .navbar-nav .nav-link:hover {
 background-color: #7c1417;
