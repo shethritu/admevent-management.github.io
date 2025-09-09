@@ -2,6 +2,7 @@
 html {
   scroll-behavior: smooth;
 }
+
 body {
 font-family: 'Quicksand', sans-serif;
 }
@@ -58,7 +59,7 @@ width: auto;
 .btn:hover, .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle,
 .btn-primary.focus, .btn-primary:focus, .btn-primary:not(:disabled):not(.disabled).active:focus, .btn-primary:not(:disabled):not(.disabled):active:focus, .show>.btn-primary.dropdown-toggle:focus,
 .btn-secondary:not(:disabled):not(.disabled).active, .btn-secondary:not(:disabled):not(.disabled):active, .show>.btn-secondary.dropdown-toggle,
-.btn-secondary:not(:disabled):not(.disabled).active:focus, .btn-secondary:not(:disabled):not(.disabled):active:focus, .show>.btn-secondary.dropdown-toggle:focus{
+.btn-secondary:not(:disabled):not(.disabled).active:focus, .btn-secondary:not(:disabled):not(.disabled):active:focus, .show>.btn-secondary.dropdown-toggle:focus {
 background-color: #fff;
 color: #7c1417;
 border: 1px solid #7c1417;
@@ -80,6 +81,7 @@ text-transform: uppercase;
 box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
 }
 
+
 /*top-header*/
 .top-header {
 background-color: #7c1417;
@@ -96,51 +98,106 @@ margin: 0 7px;
 .contact-info a {
 color: #fff;
 }
+.contact-info a:hover,
+footer .address a:hover{
+    text-decoration: underline;
+}
 .contact-info i {
 margin-right: 10px;
 }
 
 
 
+
 /*header*/
-.dropdown-toggle.active-dropdown::after{transform:rotate(-90deg)}
-.dropdown-toggle.active-dropdown::after {
-transform: rotate(-90deg);
+#header {
+    padding: 10px 0;
 }
-header .navbar-expand-md .navbar-collapse{
-justify-content: flex-end;
+#header .header-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
-.dropdown-item, .dropdown-menu, .navbar-light .navbar-nav .nav-link{
-font-size: 14px;
-color: #7c1417;
+#header .main-nav {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-left: 20px;
+    justify-content: space-between;
 }
-.dropdown-menu{
-border-radius: 10px;
-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
--webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
+#header .main-nav nav ul li {
+    display: inline-block;
+    position: relative;
+    margin-right: 20px;
 }
-.navbar-expand-md .navbar-nav .nav-link {
-padding: 15px;
- color: rgba(0,0,0,.9);
+#header .main-nav .click-menu,
+#header .main-nav .cancel-menu {
+    display: none;
+    cursor: pointer;
+    position: relative;
+    z-index: 11;
+    width: 30px;
+    height: 30px;
 }
-.navbar-light .navbar-nav .nav-link:hover {
+#header .main-nav .click-menu span,
+#header .main-nav .cancel-menu span {
+    width: 25px;
+    height: 4px;
+    background: #000;
+    transition: .5s all ease-in-out;
+    position: relative;
+    border-radius: 5px;
+}
+body.show #header.show .main-nav .click-menu span,
+body.show #header .main-nav .cancel-menu span {
+    background: #000;
+}
+#header .main-nav .cancel-menu span {
+    position: absolute;
+    height: 4px;
+}
+#header .main-nav .cancel-menu span:first-child {
+    transform: rotate(45deg);
+}
+#header .main-nav .cancel-menu span:last-child {
+    transform: rotate(-45deg);
+}
+
+.navbar-brand img{max-width: 110px;width: 100%;}
+
+.navbar-brand {padding: 0;}
+@keyframes smoothScroll {
+    0% {
+        transform: translateY(-60px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+#header.show {
+    background-color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    animation: smoothScroll 1s forwards;
+    z-index: 1000;
+    box-shadow: 0 0 10px 2px #0000005d;
+}
+.nav-link {
+    padding: 10px;
+    text-transform: uppercase;
+    font-size: 15px;
+    color: #000;
+}
+.nav-link:hover {
 background-color: #7c1417;
 color: #fff;
 border-radius: 10px;
 }
-.dropdown-menu{
-min-width: 14rem;
-}
-.dropdown-menu li {
-padding: 0;
-border-bottom: 1px solid #7c1417;
-}
-.dropdown-menu li:last-child{
-border: 0;
-}
-.dropdown-item {
-padding: .55rem 1.5rem;  
-}
+
 
 
 @media only screen and (min-width: 991px){
@@ -427,13 +484,12 @@ margin: 0 0 30px;
 footer a{
 color: #fff;
 }
-footer a:hover{
-color: rgba(255, 255, 255, 0.8);
-}
-
 .footer-links a {
 display: block;
 margin: 23px 0;
+}
+footer a:hover{
+    color: rgba(255, 255, 255, 0.8);
 }
 
 /*footer-copyright*/
@@ -442,7 +498,12 @@ text-align: center;
 padding: 15px 0 0;
 font-size: 14px;
 }
-
+.footer-social a {
+    padding: 0 5px;
+}
+.footer-social a i {
+    font-size: 25px;
+}
 
 
 /*----------------------------- responsive style -------------------------*/
@@ -459,10 +520,6 @@ font-size: 14px;
 .sec-heading h2 {
 font-size: 44px;
 }
-.navbar-expand-md .navbar-nav .nav-link {
-padding: 10px;
-font-size: 13px;
-}
 .event-content {
 padding: 35px 32px 30px 61px;
 }
@@ -478,39 +535,108 @@ font: normal normal normal 28px FontAwesome;
 }/*-------- 1199 ends here ----------*/
 
 @media screen and (max-width: 991px) {
-.navbar-expand-md .navbar-nav .nav-link {
-padding: 7px;
-font-size: 10px;
-}
-.navbar{
-padding: 0;
-}
-.navbar-brand img {
-    max-width: 150px;
-    width: 100%;
-}
+    .navbar-nav .nav-link {
+        padding: 7px;
+        font-size: 12px;
+    }
+    .navbar{
+    padding: 0;
+    }
+    .navbar-brand img {
+        max-width: 150px;
+        width: 100%;
+    }
+
+        #header .main-nav nav ul li {
+            margin-right: 0;
+        }
+        #header .main-nav nav {
+            position: fixed;
+            top: 0;
+            left: -50%;
+            width: 100%;
+            height: 100vh;
+            background: #fff;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.5s all ease-in-out;
+            z-index: 111;
+            padding-top: 60px;
+        }
+        #header .main-nav nav.show {
+            left: 0;
+            opacity: 1;
+            visibility: visible;
+        }
+        #header .main-nav nav ul li {
+            display: block;
+            text-align: left;
+            padding: 5px 10px;
+        }
+        #header .main-nav .click-menu,
+        #header .main-nav .cancel-menu {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 31px;
+            padding: 5px;
+        }
+
+        #header .main-nav .cancel-menu {
+            position: fixed;
+            top: 20px;
+            left: -100%;
+            max-width: 30px;
+            width: 100%;
+            text-align: center;
+            z-index: 222;
+            transition: 0.5s;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        #header .main-nav .cancel-menu.show {
+            opacity: 1;
+            visibility: visible;
+            left: calc(100% - 50px);
+        }
+
+        #header .main-nav nav ul li a{
+            color: #000;
+            text-shadow: none;
+        }
+        #header .main-nav nav ul li a:hover{
+            color: #fff;
+        }
+
+        #header .main-nav {
+            flex-direction: row-reverse;
+        }
+    /*---------------- header css end ----------------*/
 
 
-.event-content {
-padding: 35px 22px 30px 59px;
-}
-.event-info {
-padding: 30px 8px;
-}
-.event-content:before {
-left: 8%;
-}
-.sec-heading h2 {
-font-size: 40px;
-}
-footer{
-font-size: 10px;
-}
+    .event-content {
+    padding: 35px 22px 30px 59px;
+    }
+    .event-info {
+    padding: 30px 8px;
+    }
+    .event-content:before {
+    left: 8%;
+    }
+    .sec-heading h2 {
+    font-size: 40px;
+    }
+    footer{
+    font-size: 10px;
+    }
 
 
-.events .row {
-    justify-content: center;
-}
+    .events .row {
+        justify-content: center;
+    }
 }/*-------- 991 ends here ----------*/
 
 @media screen and (max-width: 880px) {
@@ -546,15 +672,12 @@ padding: .5rem 0;
 .navbar-toggler-icon{
 background-image: url(../images/Menu-icon.png) !important;
 }
-.navbar-light .navbar-toggler{
+.navbar-toggler{
 background-color: #7c1417;
 }
 .navbar-toggler {
 padding: .15rem .50rem;
 font-size: 1.10rem;
-}
-.dropdown-item, .dropdown-menu, .navbar-light .navbar-nav .nav-link {
-font-size: 13px;
 }
 header .dropdown-item {
 padding: .40rem 1.5rem;
@@ -605,4 +728,18 @@ font-size: 13px;
 }
 }/*-------- 767 ends here ----------*/
 
+@media screen and (max-width: 630px) {
 
+}/*-------- 630 ends here ----------*/
+
+@media screen and (max-width: 568px) {
+
+}/*-------- 568 ends here ----------*/
+
+@media screen and (max-width: 480px) {
+
+}/*-------- 480 ends here ----------*/
+
+@media screen and (max-width: 360px) {
+
+}/*-------- 360 ends here ----------*/
